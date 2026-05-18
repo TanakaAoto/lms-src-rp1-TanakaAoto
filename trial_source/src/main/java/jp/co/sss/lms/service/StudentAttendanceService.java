@@ -335,7 +335,8 @@ public class StudentAttendanceService {
 	}
 
 	/**
-	 * Task.25 過去日の未入力チェック
+	 * 過去日の未入力チェック
+	 * @author 田中碧音 - Task.25 
 	 * @return 未入力日が0より大きい場合:true
 	 *         そうでない場合:false
 	 * @throws ParseException

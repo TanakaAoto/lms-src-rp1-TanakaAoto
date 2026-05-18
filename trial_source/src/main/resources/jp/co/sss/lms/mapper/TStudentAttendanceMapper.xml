@@ -86,6 +86,7 @@
 		WHERE student_attendance_id = #{studentAttendanceId}
 	</update>
 	
+	<!-- 田中碧音 - Task.25 -->
 	<select id="notEnterCount">
 		SELECT COUNT(*)
 		FROM t_student_attendance
