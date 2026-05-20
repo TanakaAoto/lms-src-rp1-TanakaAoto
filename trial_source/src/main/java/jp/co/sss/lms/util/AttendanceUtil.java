@@ -1,6 +1,8 @@
 package jp.co.sss.lms.util;
 
 import java.text.ParseException;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.LinkedHashMap;
 
@@ -145,6 +147,63 @@ public class AttendanceUtil {
 			return true;
 		}
 		return false;
+	}
+	
+	/**
+	 * 時間のマップを取得
+	 * 
+	 * @author 田中碧音 - Task.26
+	 * @return 1時間刻みの時間マップ
+	 */
+	public LinkedHashMap<Integer, String> getHourMap(){
+		LinkedHashMap<Integer, String> map = new LinkedHashMap<>();
+		map.put(null, "");
+		for (int i = 0; i < 24; i++) {
+			String time;
+			time = String.format("%05d", i);
+			map.put(i, time);
+		}
+		return map;
+	}
+	
+	/**
+	 * 分のマップを取得
+	 * 
+	 * @author 田中碧音 - Task.26
+	 * @return 1分刻みの時間マップ
+	 */
+	public LinkedHashMap<Integer, String> getMinuteMap(){
+		LinkedHashMap<Integer, String> map = new LinkedHashMap<>();
+		for (int i = 0; i < 60; i++) {
+			String time;
+			time = String.format("%05d", i);
+			map.put(i, time);
+		}
+		return map;
+	}
+	
+	/**
+	 * 時間(時)の切り出し
+	 * 
+	 * @author 田中碧音 - Task.26
+	 * @return 出退勤時間（時間）
+	 */
+	public Integer getHour(String trainingTime) {
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
+		LocalTime time = LocalTime.parse(trainingTime, formatter);
+		return time.getHour();
+	}
+	
+	/**
+	 * 時間(分)の切り出し
+	 * 
+	 * @author 田中碧音 - Task.26
+	 * @return 出退勤時間（分）
+	 */
+	public Integer getMinute(String trainingTime) {
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
+		LocalTime time = LocalTime.parse(trainingTime, formatter);
+		return time.getMinute();
 	}
 
 }
