@@ -239,12 +239,10 @@ public class StudentAttendanceService {
 			dailyAttendanceForm
 					.setTrainingDate(dateUtil.toString(attendanceManagementDto.getTrainingDate()));
 			// Task.26 - 田中碧音
-			// dailyAttendanceForm.setTrainingStartTime(attendanceManagementDto.getTrainingStartTime());
 			dailyAttendanceForm.setTrainingStartTimeHour(
 					attendanceUtil.getHour(attendanceManagementDto.getTrainingStartTime()));
 			dailyAttendanceForm.setTrainingStartTimeMinute(
 					attendanceUtil.getMinute(attendanceManagementDto.getTrainingStartTime()));
-			// dailyAttendanceForm.setTrainingEndTime(attendanceManagementDto.getTrainingEndTime());
 			dailyAttendanceForm.setTrainingEndTimeHour(
 					attendanceUtil.getHour(attendanceManagementDto.getTrainingEndTime()));
 			dailyAttendanceForm.setTrainingEndTimeMinute(
@@ -363,8 +361,6 @@ public class StudentAttendanceService {
 		Short deleteFlg = 0;
 		// 未入力件数の取得
 		Integer notEnterCount = tStudentAttendanceMapper.notEnterCount(lmsUserId, deleteFlg, trainingDate);
-		System.out.println(notEnterCount);
-		System.out.println("--------------------------------------------");
 		if(notEnterCount > 0) {
 			return true;
 		} else {

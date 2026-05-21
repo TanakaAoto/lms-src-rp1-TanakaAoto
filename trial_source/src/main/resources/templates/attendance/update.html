@@ -56,9 +56,9 @@
 									</select>
 								</td>
 								<td>:</td>
-								<td>
+								<td class="w70">
 									<select th:name="|attendanceList[${stat.index}].trainingStartTimeMinute|" class="form-control">
-										<option th:each="timeMinute : ${attendanaceForm.timeMinutes}" th:value="${timeMinute.key}" th:inline="text" class="form-control" 
+										<option th:each="timeMinute : ${attendanceForm.timeMinutes}" th:value="${timeMinute.key}" th:inline="text" class="form-control" 
 											th:selected="${timeMinute.key == dailyAttendanceForm.TrainingStartTimeMinute}">[[${timeMinute.value}]]</option>
 									</select>
 								</td>
@@ -69,10 +69,10 @@
 									</select>
 								</td>
 								<td>:</td>
-								<td>
+								<td class="w70">
 									<select th:name="|attendanceList[${stat.index}].trainingEndTimeMinute|" class="form-control">
 										<option th:each="timeMinute : ${attendanceForm.timeMinutes}" th:value="${timeMinute.key}" th:inline="text" class="form-control" 
-											th:selected="${timeMinute.key == dailyAttendanceForm.TrainingEndMinute}">[[${timeMinute.value}]]</option>
+											th:selected="${timeMinute.key == dailyAttendanceForm.TrainingEndTimeMinute}">[[${timeMinute.value}]]</option>
 									</select>
 								</td>
 								<td class="w80">

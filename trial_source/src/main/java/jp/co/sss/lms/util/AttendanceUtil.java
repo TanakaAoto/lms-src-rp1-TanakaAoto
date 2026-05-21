@@ -160,7 +160,7 @@ public class AttendanceUtil {
 		map.put(null, "");
 		for (int i = 0; i < 24; i++) {
 			String time;
-			time = String.format("%05d", i);
+			time = String.format("%02d", i);
 			map.put(i, time);
 		}
 		return map;
@@ -174,9 +174,10 @@ public class AttendanceUtil {
 	 */
 	public LinkedHashMap<Integer, String> getMinuteMap(){
 		LinkedHashMap<Integer, String> map = new LinkedHashMap<>();
+		map.put(null, "");
 		for (int i = 0; i < 60; i++) {
 			String time;
-			time = String.format("%05d", i);
+			time = String.format("%02d", i);
 			map.put(i, time);
 		}
 		return map;
@@ -189,6 +190,9 @@ public class AttendanceUtil {
 	 * @return 出退勤時間（時間）
 	 */
 	public Integer getHour(String trainingTime) {
+		if(trainingTime == null) {
+			return null;
+		}
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
 		LocalTime time = LocalTime.parse(trainingTime, formatter);
 		return time.getHour();
@@ -201,6 +205,9 @@ public class AttendanceUtil {
 	 * @return 出退勤時間（分）
 	 */
 	public Integer getMinute(String trainingTime) {
+		if(trainingTime == null) {
+			return null;
+		}
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
 		LocalTime time = LocalTime.parse(trainingTime, formatter);
 		return time.getMinute();
