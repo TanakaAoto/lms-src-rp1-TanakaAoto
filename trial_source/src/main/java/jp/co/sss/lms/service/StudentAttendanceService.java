@@ -358,7 +358,7 @@ public class StudentAttendanceService {
 		Date trainingDate = attendanceUtil.getTrainingDate();
 		
 		Integer lmsUserId = loginUserUtil.getLoginUserDto().getLmsUserId();
-		Short deleteFlg = 0;
+		Short deleteFlg = Constants.DB_FLG_FALSE;
 		// 未入力件数の取得
 		Integer notEnterCount = tStudentAttendanceMapper.notEnterCount(lmsUserId, deleteFlg, trainingDate);
 		if(notEnterCount > 0) {
