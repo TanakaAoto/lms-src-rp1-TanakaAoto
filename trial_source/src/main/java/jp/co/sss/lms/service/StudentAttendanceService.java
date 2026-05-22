@@ -303,13 +303,18 @@ public class StudentAttendanceService {
 			}
 			tStudentAttendance.setLmsUserId(lmsUserId);
 			tStudentAttendance.setAccountId(loginUserDto.getAccountId());
+			// 田中碧音 - Task.26
+			TrainingTime trainingTime = new TrainingTime();
 			// 出勤時刻整形
 			TrainingTime trainingStartTime = null;
-			trainingStartTime = new TrainingTime(
+			if(trainingTime.isValidTrainingTime(dailyAttendanceForm.getTrainingStartTimeHour(), dailyAttendanceForm.getTrainingStartTimeMinute())) {
+				trainingStartTime = new TrainingTime(
 					dailyAttendanceForm.getTrainingStartTimeHour(), dailyAttendanceForm.getTrainingStartTimeMinute());
-			tStudentAttendance.setTrainingStartTime(trainingStartTime.getFormattedString());
+				tStudentAttendance.setTrainingStartTime(trainingStartTime.getFormattedString());
+			}
 			// 退勤時刻整形
 			TrainingTime trainingEndTime = null;
+			if(trainingTime.isValidTrainingTime(dailyAttendanceForm.getTrainingEndTimeHour(), dailyAttendanceForm.getTrainingEndTimeMinute()))
 			trainingEndTime = new TrainingTime(
 					dailyAttendanceForm.getTrainingEndTimeHour(), dailyAttendanceForm.getTrainingEndTimeMinute());
 			tStudentAttendance.setTrainingEndTime(trainingEndTime.getFormattedString());
