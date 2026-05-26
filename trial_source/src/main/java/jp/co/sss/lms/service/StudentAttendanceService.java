@@ -314,10 +314,11 @@ public class StudentAttendanceService {
 			}
 			// 退勤時刻整形
 			TrainingTime trainingEndTime = null;
-			if(trainingTime.isValidTrainingTime(dailyAttendanceForm.getTrainingEndTimeHour(), dailyAttendanceForm.getTrainingEndTimeMinute()))
-			trainingEndTime = new TrainingTime(
-					dailyAttendanceForm.getTrainingEndTimeHour(), dailyAttendanceForm.getTrainingEndTimeMinute());
-			tStudentAttendance.setTrainingEndTime(trainingEndTime.getFormattedString());
+			if(trainingTime.isValidTrainingTime(dailyAttendanceForm.getTrainingEndTimeHour(), dailyAttendanceForm.getTrainingEndTimeMinute())) {
+				trainingEndTime = new TrainingTime(
+						dailyAttendanceForm.getTrainingEndTimeHour(), dailyAttendanceForm.getTrainingEndTimeMinute());
+				tStudentAttendance.setTrainingEndTime(trainingEndTime.getFormattedString());
+			}
 			// 中抜け時間
 			tStudentAttendance.setBlankTime(dailyAttendanceForm.getBlankTime());
 			// 遅刻早退ステータス
